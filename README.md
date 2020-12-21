@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Here is a complex expense budget tracker built with many advanced React & JavaScript tools. Some of them are State Management in React, Context API, Local Storage, Material UI and utilize a scalable React folder structure. Also incorporated voice capabilities to with Speechly. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
