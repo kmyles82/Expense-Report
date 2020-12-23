@@ -4,8 +4,9 @@ import { Delete, MoneyOff } from '@material-ui/icons'
 
 import useStyles from './styles'
 
-const List = () => {
+let List = () => {
     const classes = useStyles()
+
     const transactions = [
         { id: 1, type: "Income",  category: "Salary", amount: 50, date: "Wed Dec 23"},
         { id: 2, type: "Expense",  category: "Business", amount: 50, date: "Wed Dec 24"},
