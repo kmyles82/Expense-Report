@@ -7,13 +7,11 @@ import { ExpenseTrackerContext } from '../../../context/context'
 
 let List = () => {
     const classes = useStyles()
-    const {deleteTransaction} = useContext(ExpenseTrackerContext)
+    const {deleteTransaction, transactions} = useContext(ExpenseTrackerContext)
 
     // console.log(globalState)
     
-    const transactions = [
-        
-    ]
+    
 
     return (
         <MUIList dense={false} className={classes.list}>

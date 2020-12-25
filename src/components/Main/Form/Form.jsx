@@ -13,6 +13,10 @@ import { v4 as uuidv4 } from 'uuid'
 import { ExpenseTrackerContext } from '../../../context/context'
 
 import useStyles from './styles'
+import {
+  incomeCategories,
+  expenseCategories,
+} from '../../../constants/categories'
 
 const initialState = {
   amount: '',
@@ -33,13 +37,12 @@ const Form = () => {
       id: uuidv4(),
     }
 
-    // console.log(transaction)
-
     addTransaction(transaction)
     setFormData(initialState)
   }
 
-  console.log(formData)
+  const selectedCategories =
+    formData.type === 'Income' ? incomeCategories : expenseCategories
 
   return (
     <Grid container spacing={2}>
@@ -53,8 +56,7 @@ const Form = () => {
           <InputLabel>Type</InputLabel>
           <Select
             value={formData.type}
-            onChange={(e) => 
-                setFormData({ ...formData, type: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
           >
             <MenuItem value='Income'>Income</MenuItem>
             <MenuItem value='Expense'>Expense</MenuItem>
@@ -67,10 +69,14 @@ const Form = () => {
           <Select
             value={formData.category}
             onChange={(e) =>
-                setFormData({ ...formData, category: e.target.value })}
+              setFormData({ ...formData, category: e.target.value })
+            }
           >
-            <MenuItem value='business'>Busness</MenuItem>
-            <MenuItem value='salary'>Salary</MenuItem>
+            {selectedCategories.map((category) => (
+              <MenuItem value={category.type} key={category.type}>
+                {category.type}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
@@ -82,7 +88,8 @@ const Form = () => {
             fullWidth
             value={formData.amount}
             onChange={(e) =>
-                setFormData({ ...formData, amount: e.target.value })}
+              setFormData({ ...formData, amount: e.target.value })
+            }
           />
         </FormControl>
       </Grid>
@@ -92,8 +99,7 @@ const Form = () => {
           label='Date'
           type='date'
           value={formData.date}
-          onChange={(e) => 
-            setFormData({ ...formData, date: e.target.value })}
+          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
         />
       </Grid>
       <Button
