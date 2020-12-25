@@ -12,10 +12,7 @@ let List = () => {
     // console.log(globalState)
     
     const transactions = [
-        { id: 1, type: "Income",  category: "Salary", amount: 50, date: "Wed Dec 23"},
-        { id: 2, type: "Expense",  category: "Business", amount: 50, date: "Wed Dec 24"},
-        { id: 3, type: "Income",  category: "Business", amount: 50, date: "Wed Dec 25"},
-        { id: 4, type: "Expense",  category: "Salary", amount: 50, date: "Wed Dec 26"},
+        
     ]
 
     return (
@@ -30,7 +27,7 @@ let List = () => {
                         </ListItemAvatar>
                         <ListItemText primary={transaction.category} secondary={`$${transaction.amount} - ${transaction.date}`}/>
                         <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete" onClick={deleteTransaction(transaction.id)}>
+                            <IconButton edge="end" aria-label="delete" onClick={() => deleteTransaction(transaction.id)}>
                                 <Delete />
                             </IconButton>
                         </ListItemSecondaryAction>

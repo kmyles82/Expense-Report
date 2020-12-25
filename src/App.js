@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div>
       <Grid
-      className={classes.grid}
+        className={classes.grid}
         container
         spacing={2}
         alignItems='center'
@@ -19,13 +19,13 @@ const App = () => {
         style={{ height: '100vh' }}
       >
         <Grid item xs={12} sm={4}>
-          <Details title="Income"/>
+          <Details title="Income" />
         </Grid>
         <Grid item xs={12} sm={3}>
           <Main />
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Details title="Expense"/>
+          <Details title="Expense" />
         </Grid>
       </Grid>
     </div>

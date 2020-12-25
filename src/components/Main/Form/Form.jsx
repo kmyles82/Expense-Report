@@ -18,7 +18,7 @@ const initialState = {
   amount: '',
   category: '',
   type: 'Income',
-  data: new Date(),
+  date: new Date(),
 }
 
 const Form = () => {
@@ -32,6 +32,8 @@ const Form = () => {
       amount: Number(formData.amount),
       id: uuidv4(),
     }
+
+    // console.log(transaction)
 
     addTransaction(transaction)
     setFormData(initialState)
@@ -47,11 +49,12 @@ const Form = () => {
         </Typography>
       </Grid>
       <Grid item xs={6}>
-        <FormControl fullWidth onSubmit=''>
+        <FormControl fullWidth>
           <InputLabel>Type</InputLabel>
           <Select
             value={formData.type}
-            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+            onChange={(e) => 
+                setFormData({ ...formData, type: e.target.value })}
           >
             <MenuItem value='Income'>Income</MenuItem>
             <MenuItem value='Expense'>Expense</MenuItem>
@@ -64,8 +67,7 @@ const Form = () => {
           <Select
             value={formData.category}
             onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
+                setFormData({ ...formData, category: e.target.value })}
           >
             <MenuItem value='business'>Busness</MenuItem>
             <MenuItem value='salary'>Salary</MenuItem>
@@ -80,21 +82,19 @@ const Form = () => {
             fullWidth
             value={formData.amount}
             onChange={(e) =>
-              setFormData({ ...formData, amount: e.target.value })
-            }
+                setFormData({ ...formData, amount: e.target.value })}
           />
         </FormControl>
       </Grid>
       <Grid item xs={6}>
-        <FormControl fullWidth>
-          <TextField
-            type='date'
-            label='Date'
-            fullWidth
-            value={formData.date}
-            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-          />
-        </FormControl>
+        <TextField
+          fullWidth
+          label='Date'
+          type='date'
+          value={formData.date}
+          onChange={(e) => 
+            setFormData({ ...formData, date: e.target.value })}
+        />
       </Grid>
       <Button
         className={classes.button}
