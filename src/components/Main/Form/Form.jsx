@@ -12,7 +12,7 @@ import {
 import { v4 as uuidv4 } from 'uuid'
 import { ExpenseTrackerContext } from '../../../context/context'
 import formatDate from '../../../utils/formatDate'
-import { useSpeechContext, UseSpeechContext } from '@speechly/react-client'
+import { useSpeechContext } from '@speechly/react-client'
 
 import useStyles from './styles'
 import {
@@ -34,6 +34,8 @@ const Form = () => {
   const { segment } = useSpeechContext()
 
   const createTransaction = () => {
+    if(Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return
+    
     const transaction = {
       ...formData,
       amount: Number(formData.amount),
@@ -78,6 +80,10 @@ const Form = () => {
             break;
         }
       })
+
+      if(segment.isFinal && formData.amount && formData.category && formData.type && formData.date){
+        createTransaction()
+      }
     }
   }, [segment])
 
